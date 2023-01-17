@@ -18,9 +18,16 @@ public class BunParameterizedTest {
     @Parameterized.Parameters
     public static Object[][] getBunParameters() {
         return new Object[][]{
-                {"", 50.0f},
-                {"Булочка с чернилами каракатицы", 100.5f},
-                {"Вселенская булка Таноса", 234.56f},
+                {"", 50},
+                {"Булочка с чернилами каракатицы", Float.MIN_VALUE},
+                {"Вселенская булка Таноса",  -Float.MAX_VALUE},
+                {String.format("%25c", ' ').replaceAll(" ", "\\" + "Э")
+                        + "то " + String.format("%25c", ' ').replaceAll(" ", "\\" + "о")
+                        + "чень дл" + String.format("%25c", ' ').replaceAll(" ", "\\" + "и")
+                        + "нная стр" + String.format("%25c", ' ').replaceAll(" ", "\\" + "о")
+                        + "ка", Float.MAX_VALUE},
+                {"@$%&*()^%$", 0},
+                {null, -0.01f}
         };
     }
 
