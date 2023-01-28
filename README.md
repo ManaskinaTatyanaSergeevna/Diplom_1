@@ -35,7 +35,7 @@ mvn clean verify
 .gitignore
 pom.xml
 README.md
-src
+   src
    |-- main
    |   |-- java
    |   |   |-- praktikum
