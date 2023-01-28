@@ -82,12 +82,20 @@ public class BurgerTest {
     @Test
     public void getReceiptBurgerTest() {
         Burger burger = new Burger();
-        Bun bun = new Bun("Булка с кунжутом", 2.45f);
-        Ingredient filling = new Ingredient(IngredientType.FILLING, "Говяжья котлетка", 31.90f);
-        Ingredient sauce = new Ingredient(IngredientType.SAUCE, "Дорогущий майонез", 359.90f);
+        String name = "Булка с кунжутом";
+        String cutlet = "Говяжья котлетка";
+        String mayo = "Дорогущий майонез";
+        Bun bun = new Bun(name, 2.45f);
+        Ingredient filling = new Ingredient(IngredientType.FILLING, cutlet, 31.90f);
+        Ingredient sauce = new Ingredient(IngredientType.SAUCE, mayo, 359.90f);
         burger.setBuns(bun);
         burger.addIngredient(filling);
         burger.addIngredient(sauce);
-        Assert.assertEquals(396.7, burger.getPrice(), 0.001);
+        System.out.println(burger.getReceipt());
+        Assert.assertEquals("(==== " + name + " ====)\r\n" +
+                "= filling " + cutlet + " =\r\n" +
+                "= sauce " + mayo + " =\r\n" +
+                "(==== " + name + " ====)\r\n" +
+                "\r\nPrice: 396,699982\r\n", burger.getReceipt());
     }
 }
